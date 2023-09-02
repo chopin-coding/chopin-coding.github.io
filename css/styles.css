@@ -1,0 +1,23 @@
+:root {
+    --bs-body-font-family: 'Lato', serif;
+}
+
+
+@media (max-width: 768px) {
+    /* Adjust the width for screens with a maximum width of 768px (typical tablet and mobile screen size) */
+    .card-wrapper {
+        width: 100%; /* Make it full width on smaller screens */
+        max-width: 100%; /* Ensure it doesn't exceed the screen width */
+    }
+
+
+}
+
+
+.navbar-brand {
+    margin-right: 50px;
+}
+
+.nav-item {
+    margin-right: 20px;
+}

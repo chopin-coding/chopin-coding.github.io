@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Blog</title>
+
+    <!--  Bootstrap  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+
+
+    <!--  Custom font  -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,300&display=swap"
+          rel="stylesheet">
+
+    <!--  Local styles  -->
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark-subtle">
+        <div class="container justify-content-center">
+            <a class="navbar-brand" href="../index.html">Emre Erguvan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ps-5 ms-5 flex-grow-0" id="navbarNavDropdown">
+                <ul class="navbar-nav mb-2 px-3 mb-lg-0 text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container mt-2 pt-2">
+    <div class="row">
+        <p class="pt-4 text-center">
+            Below are my latest blogs, visit <a href="https://chopin.hashnode.dev/">this link</a> for the full list.
+        </p>
+    </div>
+    <div x-data="{ blogs: null }" x-init="blogs = await gql()">
+        <template x-if="blogs == null">
+            <div class="spinner-border m-5" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </template>
+        <template x-if="blogs">
+            <template x-for="blog in blogs.data.user.publication.posts">
+                <div class="row pt-4">
+                    <div class="container d-flex justify-content-center">
+                        <div class="card text-bg-dark bg-dark-subtle" style="width: 40rem;">
+                            <div class="card-body">
+                                <h5 x-text="blog.title" class="card-title"></h5>
+                                <h6 x-text="formatHashnodeDate(blog.dateAdded) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + blog.readTime + ' minute read'"
+                                    class="card-subtitle mb-2 text-body-secondary"></h6>
+                                <p x-text="blog.brief" class="card-text"></p>
+                                <a x-bind:href="`https://chopin.hashnode.dev/${blog.slug}`" class="card-link">Read
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </template>
+        </template>
+        <template x-if="blogs === false">
+            <span>Error fetching blogs :(</span>
+        </template>
+    </div>
+</div>
+
+<script src="../js/blog.js" defer></script>
+<script src="//unpkg.com/alpinejs" defer></script>
+</body>
+</html>
