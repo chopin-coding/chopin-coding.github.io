@@ -1,23 +1,132 @@
 :root {
     --bs-body-font-family: 'Lato', serif;
+    --bs-body-color: #ffffff;
 }
 
 
-@media (max-width: 768px) {
-    /* Adjust the width for screens with a maximum width of 768px (typical tablet and mobile screen size) */
+#mobile-disclaimer {
+    display: none;
+}
+
+/* Mobile screen size */
+@media (max-width: 550px) {
     .card-wrapper {
         width: 100%; /* Make it full width on smaller screens */
         max-width: 100%; /* Ensure it doesn't exceed the screen width */
     }
 
+    .timeline-area {
+        display: none;
+    }
+
+    #mobile-disclaimer {
+        display: block;
+    }
 
 }
 
 
+.my_photo {
+    /*width: 100%;*/
+    max-width: 100%;
+    text-align: center;
+    background-color: #1a1d20;
+    border-radius: 10%;
+    /*height: 100vh;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.my_photo img {
+    /*height: 300px;*/
+    /*width: 300px;*/
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 10%;
+
+}
+
+li {
+    font-weight: normal;
+}
+
+/*.timeline-area {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+
+/* Timeline Container */
+.timeline-area {
+    /*background: var(bg-dark);*/
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Outer Layer with the timeline border */
+
+.timeline-outer {
+    border-left: 2px solid #97999a;
+}
+
+.timeline-title {
+    position: relative;
+}
+
+/* Timeline dot  */
+
+.timeline-title::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border-radius: 100%;
+    left: -21px;
+    border: 3px solid #ffffff;
+}
+
+.index-greeting {
+    min-height: calc(80vh - (56px + 90px));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#indexHorizontalRule {
+    color: #ffffff;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.resume-horizontal-rule {
+    color: #ffffff;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.jumbo1 {
+    background-color: #212529;
+}
+
 .navbar-brand {
-    margin-right: 50px;
+    margin-right: 25px;
+    margin-left: 45px;
 }
 
 .nav-item {
     margin-right: 20px;
+}
+
+.contact-icon-links {
+    text-decoration: none;
+    color: inherit;
 }
