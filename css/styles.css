@@ -1,11 +1,43 @@
 :root {
     --bs-body-font-family: 'Lato', serif;
     --bs-body-color: #ffffff;
+    --hr-color-default: #ffffff;
 }
 
+div.timeline-info ul li {
+    /*font-weight: 300;*/
+}
 
 #mobile-disclaimer {
     display: none;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    /*max-height: 200px;*/
+}
+
+
+.stack-icons {
+    width: 40px;
+    height: 40px;
+    margin: 10px 5px 10px 5px;
+}
+
+.htmx-icon {
+    width: 120px;
+    height: 80px;
+/*    636 × 424 */
+}
+
+.mongodb-icon {
+    width: 150px;
+    height: 50px;
+}
+
+.card-title {
+    font-weight: 300;
 }
 
 /* Mobile screen size */
@@ -23,6 +55,13 @@
         display: block;
     }
 
+
+
+    @media (max-width: 767px) {
+        .project-item {
+            flex-direction: column;
+        }
+    }
 }
 
 
@@ -106,27 +145,79 @@ li {
 }
 
 .resume-horizontal-rule {
-    color: #ffffff;
+    color: var(--hr-color-default);
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 }
 
+.project-item {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.project-item-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-item-description-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.project-item-description-title {
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.projects-horizontal-rule {
+    color: #ffffff;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    color: white;
+}
+
+
+div.carousel-item img {
+    border-radius: 5%;
+    /*height: 800px;*/
+    /*width: 600px;*/
+    /*max-width: 300px; !* Set the maximum width to 100% of its container *!*/
+    /*max-height: 100%; !* Set the maximum height to 100% of its container *!*/
+}
 
 .jumbo1 {
     background-color: #212529;
 }
+
 
 .navbar-brand {
     margin-right: 25px;
     margin-left: 45px;
 }
 
+
 .nav-item {
     margin-right: 20px;
+}
+
+.nav-link {
+    font-weight: 300;
+}
+
+.navbar-brand {
+    font-weight: 300;
 }
 
 .contact-icon-links {
     text-decoration: none;
     color: inherit;
+
 }
