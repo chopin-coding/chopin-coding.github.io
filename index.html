@@ -139,9 +139,11 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const footerYear = document.getElementById("footerCopyrightYear");
-            if (footerYear) {
-                const currentYear = new Date().getFullYear();
+            const currentYear = new Date().getFullYear();
+            if (footerYear && (currentYear === 2023)) {
                 footerYear.innerHTML = `Emre Erguvan ${currentYear} &copy;`;
+            } else if (currentYear > 2023) {
+                footerYear.innerHTML = `Emre Erguvan 2023-${currentYear} &copy;`;
             }
         });
     </script>
