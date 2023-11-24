@@ -80,16 +80,16 @@
 
         </template>
         <template x-if="blogs">
-            <template x-for="blog in blogs.data.user.publication.posts">
+            <template x-for="blog in blogs.data.publication.posts.edges" :key="blog.node.url">
                 <div class="row pb-4">
                     <div class="container d-flex justify-content-center">
                         <div class="card" style="width: 40rem;">
                             <div class="card-body">
-                                <h5 x-text="blog.title" class="card-title"></h5>
-                                <h6 x-text="formatHashnodeDate(blog.dateAdded) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + blog.readTime + ' minute read'"
+                                <h5 x-text="blog.node.title" class="card-title"></h5>
+                                <h6 x-text="formatHashnodeDate(blog.node.publishedAt) + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + blog.node.readTimeInMinutes + ' minute read'"
                                     class="card-subtitle mb-2 text-body-secondary"></h6>
-                                <p x-text="blog.brief" class="card-text"></p>
-                                <a x-bind:href="`https://chopin.hashnode.dev/${blog.slug}`" class="card-link">Read
+                                <p x-text="blog.node.brief" class="card-text"></p>
+                                <a x-bind:href="blog.node.url" class="card-link">Read
                                     More</a>
                             </div>
                         </div>

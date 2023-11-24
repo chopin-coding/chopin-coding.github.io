@@ -9,23 +9,28 @@ async function gql() {
         return JSON.parse(cachedData);
     }
 
-    const query = `
-    {
-        user(username: "chopin") {
-            publication {
-                posts(page: 0) {
-                    title
-                    brief
-                    slug
-                    dateAdded
-                    readTime
-                }
-            }
+
+    const query = `query Publication {
+  publication(host: "chopin.hashnode.dev/") {
+    isTeam
+    title
+    posts(first: 10) {
+      edges {
+        node {
+          title
+          brief
+          url
+          readTimeInMinutes
+          publishedAt
         }
-    }`;
+      }
+    }
+  }
+}`;
+
 
     try {
-        const response = await fetch('https://api.hashnode.com/', {
+        const response = await fetch('https://gql.hashnode.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,11 +59,11 @@ async function gql() {
 const TTL = 300000; // 5 minute TTL for the cache
 
 function formatHashnodeDate(hashnodeDate) {
-  const date = new Date(hashnodeDate);
-  const formattedDate = date.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-  return formattedDate;
+    const date = new Date(hashnodeDate);
+    const formattedDate = date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
+    return formattedDate;
 }
